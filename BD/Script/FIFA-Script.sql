@@ -24,9 +24,14 @@ create table info(
     mensagem varchar(350)
 );
 
---  relacionamento entre tabela jogadores e campeonato
-alter table jogadores add column fkCampeonato int;
-alter table jogadores add foreign key (fkCampeonato) references campeonato (idCampeonato);
+create table pin_campeonato(
+	fk_idJogador int,
+    fk_idCampeonato int,
+    codigoCampeonato varchar(45),
+    primary key (fk_idJogador, fk_idCampeonato),
+    foreign key (fk_idJogador) references jogadores (idJogador),
+    foreign key (fk_idCampeonato) references campeonato (idCampeonato)
+);
 
 --  relacionamento entre tabela jogadores e info
 alter table jogadores add column fkInfo int;
@@ -47,12 +52,24 @@ insert into info values
 dos jogadores, referentes a atletas que cresceram muito de dentro dos campos reais desde o lançamento do game (em outubro de 2020)');
 
 insert into jogadores values 
-	(null,'Vitor Santos','+55 41 95874-8744','vitorsantosreis@gmail.com','PlayStation', '2003-04-03', '2', '5'),
-	(null,'Marcelo Batista','+55 61 94741-4412','marceloBatista@gmail.com','Xbox', '1998-07-30', '1', '1'),
-	(null,'Gabriela Barbosa','+55 11 94055-2451','gabrielabarbosa@gmail.com','Xbox', '2005-06-14', '3', '3'),
-	(null,'Felipe Amorim','+55 11 96019-6061','felipe.reis@bandtec.com','PlayStation', '2002-02-25', '4', '4');
+	(null,'Vitor Santos','+55 41 95874-8744','vitorsantosreis@gmail.com','PlayStation', '2003-04-03', '5'),
+	(null,'Marcelo Batista','+55 61 94741-4412','marceloBatista@gmail.com','Xbox', '1998-07-30', '1'),
+	(null,'Gabriela Barbosa','+55 11 94055-2451','gabrielabarbosa@gmail.com','Xbox', '2005-06-14', '3'),
+	(null,'Felipe Amorim','+55 11 96019-6061','felipe.reis@bandtec.com','PlayStation', '2002-02-25', '4');
+insert into jogadores values (null,'Maria Eduarda','+55 11 95785-8788','maria.eduarda@gmail.com','Playstation','2003-06-12','4');
+    
+    
+insert into pin_campeonato values
+(4,1,'OPIY2187'),
+(1,4,'UYSS1121'),
+(3,2,'FEVI1208'),
+(2,3,'MAFE2108');
 
-select j.nome, j.celular, j.email, j.plataforma, j.dataNasc, c.nome as 'Nome Campeonato', c.tipo, c.premiação, i.titulo, i.mensagem from jogadores as j 
-inner join campeonato as c on j.fkCampeonato = c.idCampeonato
-inner join info as i on j.fkInfo = i.idInfo;
+select j.idJogador, j.nome, j.email, j.plataforma, j.dataNasc, pin.codigoCampeonato as 'Pin Campeonato', c.* from jogadores as j
+inner join pin_campeonato as pin on pin.fk_idJogador = j.idJogador
+inner join campeonato as c on pin.fk_idCampeonato = c.idCampeonato;
 
+select j.idJogador, j.nome, j.email, j.plataforma, j.dataNasc, i.titulo, i.mensagem from jogadores as j
+inner join info as i on j.fkInfo = i.idInfo; 
+
+update jogadores set fkInfo = '1' where idJogador = '5';
