@@ -1,0 +1,452 @@
+body{
+    margin: 0;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.destaque{
+    color: #30a6f0;
+}
+
+.container {
+    width: 90%; 
+    margin: auto;
+}
+
+/* 1 */
+.barra{
+    background-color: #0e0e0f;
+    overflow: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.fifa{
+    float: right;
+    height: 30px;
+    margin-left: 35px;
+}
+/* 2 */
+.header{
+    background-color: black;
+    overflow: auto;
+}
+
+.titulo {
+    margin: 0;
+    float: left;
+    padding-top: 7px;
+}
+
+.navbar {
+    list-style: none;
+    float: right;
+    cursor: pointer;
+}
+
+li {
+    float: left;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+/* 3 */
+.alocation{
+    background-color: gray;
+    background-image: url(../imagens/alter.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100px;
+    /* padding: 40px; */
+}
+
+.alocation h3{
+    margin-left: 65px;
+    padding-top: 20px;
+    float: left;
+}
+
+.botao{
+    margin-right: 115px;
+    margin-top: 25px;
+    float: right;
+    cursor: pointer;
+    background-color: Transparent;
+    border-color: white;
+    border-width: 3.5px;
+    border-style: solid;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/* 4 */
+.banner{
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    background-image: url(../imagens/log.jpg);
+}
+
+.texto{
+    margin: 0;
+    font-size: 40px;
+    padding-top: 100px;
+    margin-left: 5%;
+}
+.banner button{
+    margin-right: 82%;
+}
+/* 5 */
+.alocation2{
+    background-color: #2272a1;
+    height: 50px;
+}
+.alocation3{
+    background-color: #0e0e0f;
+    height: 50px;
+}
+/* 6 */
+.sobre{
+    padding-top: 15px;
+    padding-bottom: 10px;
+    color: #2272a1;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+/* 7 */
+.box{
+    color: black;
+    background-color: white;
+    /* border-bottom: 5px solid #2272a1; */
+}
+
+.box img{
+    height: 100px;
+}
+
+.box{
+    overflow: auto;
+}
+
+.box h3{
+    color: #2272a1;
+}
+
+.box-item{
+    float: left;
+    text-align: center;
+    width: 27%;
+    padding: 3%;
+}
+/* 8 */
+.footer {
+    text-align: center;
+    height: 50px;
+    background-color: #0e0e0f;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.footer img{
+    height: 30px;
+    padding: 5px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar :hover {
+    font-weight: bold;
+    color: #2272a1;
+}
+
+/* --------- PARTE CAMPEONATO --------- */
+
+.banners{
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    background-image: url(../imagens/fute.jpg);
+}
+
+.textos{
+    margin: 0;
+    padding-top: 200px;
+    margin-left: 5%;
+}
+
+.campeonatos{
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    background-image: url(../imagens/monsterss.jpg);
+}
+
+.star{
+    margin: 0;
+    padding-top: 320px;
+    margin-left: 62%;
+    /* color: #2272a1; */
+}
+
+/* info ----------------------------------- */
+.info{
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    background-image: url(../imagens/white.jpeg);
+    margin: 0;
+    overflow: auto;
+    /* margin-left: 150px; */
+}
+
+.coluna{
+    background-color: #0e0e0f;
+    margin-top: 35px;
+    margin-left: 65px;
+    height: 440px;
+    width: 300px;
+    float: left;
+}
+
+.coluna img{
+    width: 300px;
+    height: 150px;
+}
+
+/* cadastro campeonato */
+
+.cad-campeonato{
+    background-image: url(../imagens/fifelson.jpg);
+    height: 470px;
+}
+
+.cad-campeonato h2{
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+.cad-campeonato input{
+    width: 300px;
+    height: 30px;
+    background-color: transparent;
+    border-color: white;
+    border-width: 3.5px;
+    border-style: solid;
+    color: white;
+    text-align: center;
+}
+
+.cad-campeonato button{
+    margin-left: 45%;
+    margin-top: 7%;
+    cursor: pointer;
+    background-color: Transparent;
+    border-color: white;
+    border-width: 3.5px;
+    border-style: solid;
+    color: white;
+    border-radius: 10%;
+    height: 50px;
+    width: 100px;
+}
+
+.esquerda{
+    float: left;
+    margin-left: 13%;
+}
+
+.direita{
+    margin-left: 58%;
+}
+
+.todos{
+    margin-left: 22%;
+}
+
+.btn-envio{
+    margin-left: 20%;
+    cursor: pointer;
+}
+
+/* barra lateral -  */
+.tela-principal{
+    margin: 0;
+    background-image: url(../imagens/whitera.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
+}
+
+.barra-lateral{
+    margin: 0;
+    float: left;
+    background-color: #0e0e0f;
+    border-right: 5px solid #2272a1;
+    height: 100vh;
+    width: 270px;
+}
+
+.barra-lateral h2{
+    margin-left: 60px;
+    float: left;
+    padding-top: 45px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+}
+
+.btn-sair{
+        margin-left: 75px;
+        margin-top: 75px;
+        float: left;
+        cursor: pointer;
+        background-color: Transparent;
+        border-color: white;
+        border-width: 3.5px;
+        border-style: solid;
+        color: white;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 25px;
+        padding-right: 25px;    
+}
+
+.bot :hover{
+    border-color: #30a6f0;
+    color: #30a6f0;
+    transition: all 0.5s ease-in;
+}
+
+.nav{
+    padding-top: 75px;
+    text-align: center;
+    text-transform: uppercase;    
+}
+
+.nav span{
+    border-bottom: 2px solid white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.nav :hover{
+    border-color: #30a6f0;
+    transition: all 0.5s ease-in;
+}
+
+/* estatisticas */
+
+.estatistica{
+    float: left;
+    background-color: #0e0e0f;
+    height: 250px;
+    width: 400px;
+    margin-left: 4%;
+    margin-top: 8%;
+    border-radius: 25px;
+}
+
+.estatisticaTwo{
+    float: left;
+    background-color: #0e0e0f;
+    height: 250px;
+    width: 400px;
+    margin-left: 5%;
+    margin-top: 8%;
+    border-radius: 25px;
+}
+
+.estat{
+    margin: 0;
+    color: #2272a1;
+    margin-left: 36%;
+    padding-top: 85px;
+    text-transform: uppercase;
+}
+
+.champs{
+    margin: 0;
+    color: #2272a1;
+    margin-left: 42%;
+    padding-top: 85px;
+    text-transform: uppercase;
+}
+
+
+/* tabelas -----------------------------------------------------------------------*/
+.mostra{
+    margin-top: 75px;
+}
+
+.publicacao {
+    background-color: white;
+    margin: 0 auto;
+    width: 45%;
+    display: block;
+    border: 1px solid rgb(255, 95, 37);
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    margin-top: 15px;
+    float: left;
+    margin-left: 170px;
+}
+
+.nome {
+    float:left;
+    color:rgb(255, 95, 37);
+    font-weight: bold;
+    padding-right: 10%;
+    /* border: 1px solid rgb(255, 95, 37); */
+}
+
+
+.tipo {
+    float:left;
+    color:rgb(255, 95, 37);
+    font-weight: bold;
+    padding-right: 60px;
+    /* border: 1px solid rgb(255, 95, 37); */
+}
+
+
+.premiação {
+    float:left;
+    color:rgb(255, 95, 37);
+    font-weight: bold;
+    padding-right: 60px;
+    /* border: 1px solid rgb(255, 95, 37); */
+}
+
+
+.pinCamp {
+    color:rgb(255, 95, 37);
+    font-weight: bold;
+    padding-right: 60px;
+    /* border: 1px solid rgb(255, 95, 37); */
+}
+
+
+/* usuario nome* ----------------------------------------------------------------/
+
+.usuario{
+    width: 75%;
+    overflow: hidden;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+.usuario b{
+    color: #30a6f0;
+}

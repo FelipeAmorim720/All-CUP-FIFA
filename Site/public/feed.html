@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script type="text/javascript" src="funcoes.js"></script>
+</head>
+
+<body class="tela-principal">
+
+    <div class="barra-lateral">
+        <h2> ALL CUP <span class="destaque"> FIFA </h2>
+
+        <div class="usuario">
+            <h4>Olá, <b id="b_user"></b></h4>
+        </div>
+
+        <div class="nav">
+            <span> <a href="telajogador.html"> Estatisticas </a> </span> <br><br>
+            <span> <a href="ligas.html"> Campeonatos </a> </span> <br><br>
+            <span class="destaque">Feed</span> <br><br>
+        </div>
+
+        <div class="bot">
+            <button href="#" class="btn-sair" onclick="logoff()">LOGOUT</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    verificar_autenticacao();
+</script>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeonatos</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script type="text/javascript" src="funcoes.js"></script>
+</head>
+
+<body class="tela-principal" onload="obterCamp()">
+
+    <div class="barra-lateral">
+        <h2> ALL CUP <span class="destaque"> FIFA </h2>
+
+        <div class="usuario">
+            <h4>Olá, <b id="b_user"></b></h4>
+        </div>
+
+        <div class="nav">
+            <span> <a href="telajogador.html"> Estatisticas </a> </span> <br><br>
+            <span class="destaque">Campeonatos</span> <br><br>
+            <span> <a href="feed.html"> Feed </a> </span> <br><br>
+        </div>
+
+        <div class="bot">
+            <button href="#" class="btn-sair" onclick="logoff()">LOGOUT</button>
+        </div>
+    </div>
+
+    <h2 class="champs">Campeonatos Para Jogar!</h2>
+
+    <div id="camps_container" class="mostra">
+
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    function atualizarFeed(quesitos) {
+        var camp = document.getElementById("camps_container");
+        camp.innerHTML = "";
+        for (let i = 0; i < quesitos.length; i++) {
+            var quesito = quesitos[i];
+
+            var divPublicacao = document.createElement("div")
+            var divNome = document.createElement("div")
+            var divTipo = document.createElement("div")
+            var divPremiação = document.createElement("div")
+            var divPin = document.createElement("div")
+
+            divNome.innerHTML = `${quesito.nome}:`;
+            divTipo.innerHTML = quesito.tipo;
+            divPremiação.innerHTML = quesito.premiação;
+            divPin.innerHTML = quesito.pinCamp;
+
+            divPublicacao.className = "publicacao";
+            divNome.className = "nome";
+            divTipo.className = "tipo"
+            divPremiação.className = "premiação";
+            divPin.className = "pinCamp";
+
+            divPublicacao.appendChild(divNome);
+            divPublicacao.appendChild(divTipo);
+            divPublicacao.appendChild(divPremiação);
+            divPublicacao.appendChild(divPin);
+
+            camp.appendChild(divPublicacao);
+        }
+    }
+
+    function obterCamp() {
+        fetch("/quesitos")
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        atualizarFeed(resposta);
+
+                        finalizarAguardar();
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações: ${error.message}`);
+            });
+    }
+
+    verificar_autenticacao();
+</script>

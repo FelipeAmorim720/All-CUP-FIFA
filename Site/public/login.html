@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login-cad.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <h2 class="titulo"><span class="fonte">ALL CUP <span class="destaque"> FIFA </span> </span></h2>
+
+            <ul class="navbar">
+                <li> <a href="index.html"> Início </a> </li>
+                <li> <a href="campeonatos.html"> Campeonatos </a></li>
+                <li> <a href="cadastro.html"> Cadastro </a></li>
+                <li> <span class="destaque"> Login </span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="espace">
+            <h1 class="destaque">Login</h1>
+            <div class="barra"></div>
+            <img src="imagens/login (2).png" alt="">
+        </div>
+
+        <div class="espace2">
+            <h4>Não possui uma conta?</h4>
+            <a href="cadastro.html"> <button> Cadastro </button> </a>
+            <!-- espaço -->
+            <div class="centro">
+                <form id="form_login" method="post" onsubmit="return entrar()">
+                    <span> Email:</span>
+                    <br>
+                    <input type="text" name="login_html" id="ipt_email" class="user">
+                    <br><br>
+
+                    <span> Senha:</span>
+                    <br>
+                    <input type="password" name="senha" id="ipt_senha" class="user">
+                    <br><br>
+
+                    <input type="submit" id="btn_entrar" value="Logar" class="btn-login">
+                </form>
+
+                <div class="extra">
+                    <div id="div_erro" class="msg_erro">
+                    </div>
+
+                    <img src="https://almeidamelo.adv.br/imagens/carregamento.gif" id="img_aguarde"  > <!--style="display: none;"-->
+                    
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+<script>
+      function entrar() {
+        aguardar();
+        var centro = new URLSearchParams(new FormData(form_login));
+        fetch("/jogadores/autenticar", {
+            method: "POST",
+            body: centro
+        }).then(resposta => {
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario_meuapp = json.email;
+                    sessionStorage.nome_usuario_meuapp = json.nome;
+                    sessionStorage.id_usuario_meuapp = json.idJogador;
+
+                    window.location.href = 'telajogador.html';
+                });
+
+            } else {
+
+                console.log('Erro de login!');
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizar_aguardar(resposta) {
+        btn_entrar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        div_erro.style.visibility = 'visible';
+        div_erro.innerHTML = resposta;
+    }
+
+</script>

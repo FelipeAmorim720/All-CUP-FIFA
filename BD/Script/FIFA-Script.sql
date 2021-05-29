@@ -1,49 +1,46 @@
 create database FIFA;
-use FIFA;
+use FIFA; 
 
 create table jogadores(
 	idJogador int primary key auto_increment,
 	nome varchar(40),
-    celular varchar(20),
     email varchar(50),
+    senha varchar(50),
     plataforma varchar(20),
     check (plataforma ='Xbox' or plataforma = 'PlayStation'),
 	dataNasc date
 );
 
-create table campeonato(
+create table campeonatos(
 	idCampeonato int primary key auto_increment,
     nome varchar(40),
     tipo varchar(40),
-    premiação float
+    premiação varchar(100),
+    pinCamp int,
+    fkjogadores int,
+    foreign key (fkjogadores) references jogadores (idJogador)
 );
 
-create table info(
+create table feed(
 	idInfo int primary key auto_increment,
     titulo varchar (45),
     mensagem varchar(350)
 );
 
-create table pin_campeonato(
-	fk_idJogador int,
-    fk_idCampeonato int,
-    codigoCampeonato varchar(45),
-    primary key (fk_idJogador, fk_idCampeonato),
-    foreign key (fk_idJogador) references jogadores (idJogador),
-    foreign key (fk_idCampeonato) references campeonato (idCampeonato)
-);
-
---  relacionamento entre tabela jogadores e info
-alter table jogadores add column fkInfo int;
-alter table jogadores add foreign key (fkInfo) references info (idInfo);
-
-insert into campeonato values 
-	(null,'Ligas Nacionais','Mata-a-Mata','2300'),
-	(null,'Ligas FUT Champions','Pontos Corridos','3500'),
-	(null,'eClub World Cup','Mata-a-Mata','3200'),
-	(null,'Ultimate Team','Pontos Corridos','5500');
+insert into jogadores values 
+	(null,'Vitor Santos','+55 41 95874-8744','vitorsantosreis@gmail.com','PlayStation', '2003-04-03'),
+	(null,'Marcelo Batista','+55 61 94741-4412','marceloBatista@gmail.com','Xbox', '1998-07-30'),
+	(null,'Gabriela Barbosa','+55 11 94055-2451','gabrielabarbosa@gmail.com','Xbox', '2005-06-14'),
+	(null,'Felipe Amorim','+55 11 96019-6061','felipe.reis@bandtec.com','PlayStation', '2002-02-25'),
+    (null,'Maria Eduarda','+55 11 95785-8788','maria.eduarda@gmail.com','Playstation','2003-06-12');
     
-insert into info values 
+insert into  campeonatos values 
+	(null,'Ligas Nacionais','Mata-a-Mata','2300','8745','1'),
+	(null,'Ligas FUT Champions','Pontos Corridos','3500','1481','2'),
+	(null,'eClub World Cup','Mata-a-Mata','3200','41455','3'),
+	(null,'Ultimate Team','Pontos Corridos','5500','4441','4');
+    
+insert into feed values 
 	(null,'Curiosidades','Em 2017, FIFA entrou para os Recordes Mundiais do Guinness como franquia de jogo de esporte mais vendida do mundo.'),
 	(null,'Ultimas Noticias','ELECTRONIC ARTS anuncia expansão global multiplataforma do EA SPORTS FIFA'),
 	(null,'Eventos','RULEBREAKEARS dia 20/01'),
@@ -51,25 +48,6 @@ insert into info values
 	(null,'Atualizações','A partir do dia 10/03, EA iniciará a distribuição das novas versões
 dos jogadores, referentes a atletas que cresceram muito de dentro dos campos reais desde o lançamento do game (em outubro de 2020)');
 
-insert into jogadores values 
-	(null,'Vitor Santos','+55 41 95874-8744','vitorsantosreis@gmail.com','PlayStation', '2003-04-03', '5'),
-	(null,'Marcelo Batista','+55 61 94741-4412','marceloBatista@gmail.com','Xbox', '1998-07-30', '1'),
-	(null,'Gabriela Barbosa','+55 11 94055-2451','gabrielabarbosa@gmail.com','Xbox', '2005-06-14', '3'),
-	(null,'Felipe Amorim','+55 11 96019-6061','felipe.reis@bandtec.com','PlayStation', '2002-02-25', '4');
-insert into jogadores values (null,'Maria Eduarda','+55 11 95785-8788','maria.eduarda@gmail.com','Playstation','2003-06-12','4');
+    select * from jogadores inner join campeonatos on fkjogadores = idjogador;
     
-    
-insert into pin_campeonato values
-(4,1,'OPIY2187'),
-(1,4,'UYSS1121'),
-(3,2,'FEVI1208'),
-(2,3,'MAFE2108');
-
-select j.idJogador, j.nome, j.email, j.plataforma, j.dataNasc, pin.codigoCampeonato as 'Pin Campeonato', c.* from jogadores as j
-inner join pin_campeonato as pin on pin.fk_idJogador = j.idJogador
-inner join campeonato as c on pin.fk_idCampeonato = c.idCampeonato;
-
-select j.idJogador, j.nome, j.email, j.plataforma, j.dataNasc, i.titulo, i.mensagem from jogadores as j
-inner join info as i on j.fkInfo = i.idInfo; 
-
 update jogadores set fkInfo = '1' where idJogador = '5';

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/cad-login.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <h2 class="titulo"><span class="fonte">ALL CUP <span class="destaque"> FIFA </span> </span></h2>
+
+            <ul class="navbar">
+                <li> <a href="index.html"> Início </a> </li>
+                <li> <a href="campeonatos.html"> Campeonatos </a></li>
+                <li> <span class="destaque"> Cadastro </span></li>
+                <li> <a href="login.html"> Login </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="espace">
+            <h1 class="destaque">Cadastre-se</h1>
+            <div class="barra"></div>
+            <img src="imagens/cadastro.png" alt="">
+        </div>
+
+        <div class="espace2">
+            <h4>Já possui uma conta?</h4>
+            <a href="login.html"><button> Logar </button> </a>
+            <!-- espaço -->
+            <div class="centro">
+                <form id="form_cadastro" method="post" onsubmit="return Cadastro()">
+                    <span> Nome:</span>
+                    <br>
+                    <input type="text" id="ipt_nome" name="nome" class="user">
+                    <br><br>
+
+                    <span> Email:</span>
+                    <br>
+                    <input type="text" id="ipt_email" name="email" class="user">
+                    <br><br>
+
+                    <span> Senha:</span>
+                    <br>
+                    <input type="password" id="ipt_senha" name="senha" class="user">
+                    <br><br>
+
+                    <span> Plataforma:</span>
+                    <br>
+                    <input type="text" id="ipt_plataforma" name="plataforma" class="user">
+                    <br><br>
+
+                    <span> Data de Nascimento:</span>
+                    <br>
+                    <input type="date" id="ipt_dataNasc" name="dataNasc" class="user">
+                    <br><br>
+
+                    <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-cad">
+                </form>
+
+                <div class="extra">
+                    <div id="div_erro" class="msg_erro">
+                    </div>
+
+                    <img src="https://almeidamelo.adv.br/imagens/carregamento.gif" id="img_aguarde">
+                    <!--style="display: none;"-->
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    function Cadastro() {
+        aguardar();
+        var centro = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/jogadores/Cadastro", {
+            method: "POST",
+            body: centro
+        }).then(function (response) {
+
+            if (response.ok) {
+
+                window.location.href = 'login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                finalizar_aguardar();
+            }
+        });
+
+        ipt_nome.value = '';
+        ipt_email.value = '';
+        ipt_senha.value = '';
+        ipt_plataforma.value = '';
+        ipt_dataNasc.value = '';
+
+        return false;
+    }
+    
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizar_aguardar(resposta) {
+        btn_entrar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        div_erro.style.visibility = 'visible';
+        div_erro.innerHTML = resposta;
+    }
+</script>

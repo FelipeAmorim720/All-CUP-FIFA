@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeonatos</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+    <!-- 1 barra para perfil, e endereçamento para o site EAsports -->
+    <div class="barra">
+        <div class="container">
+            <img class="fifa" src="imagens/electronics-arts.png">
+            <img class="fifa" src="imagens/user.png">
+        </div>
+    </div>
+
+    <!-- 2 espaço para o cliente -->
+    <div class="header">
+        <div class="container">
+            <h2 class="titulo"><span class="fonte">ALL CUP <span class="destaque"> FIFA </span> </span></h2>
+
+            <ul class="navbar">
+                <li> <a href="index.html"> Início </a> </li>
+                <li> <span class="destaque"> Campeonatos </span></li>
+                <li> <a href="cadastro.html"> Cadastro </a></li>
+                <li> <a href="login.html"> Login </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- cliente fazer cadastro -->
+    <!-- <div class="alocation">
+        <div class="container">
+            <h3>FAÇA SEU CADASTRO!</h3>
+            <button class="botao">Vamos!</button>
+        </div>
+    </div> -->
+
+    <!-- 4 banner -->
+
+    <div class="banners">
+        <div class="container">
+            <h1 class="textos">
+                LEVE SUA EXPERIÊNCIA ALÉM!
+            </h1>
+        </div>
+    </div>
+
+    <div class="alocation3"></div>
+
+    <!-- resumo ultimate team -->
+
+    <div class="campeonatos">
+        <div class="container">
+            <h2 class="star">
+                Monte seu time de Estrelas!
+            </h2>
+        </div>
+    </div>
+
+    <!-- mais campeonatos -->
+
+    <div class="info">
+        <div class="container">
+            <div class="coluna">
+                <img src="imagens/neymar.png">
+            </div>
+
+            <div class="coluna">
+                <img src="imagens/estadio.jpg">
+            </div>
+
+            <div class="coluna">
+                <img src="imagens/ea.png">
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- cadastro campeonatos -->
+
+    <div class="cad-campeonato">
+        <div class="container">
+            <h2>ORGANIZE UM CAMPEONATO</h2>
+
+            <div class="todos">
+
+                <form id="form_camp" method="post" onsubmit="return EnvioCamp()">
+                        <input style="float: left; margin-right: 45px;" type="text" id="ipt_nomeChamps" name="nome_camp"
+                            placeholder="NOME CAMPEONATO">
+                        <input type="text" id="ipt_tipoChamps" name="tipo_camp" placeholder="TIPO CAMPEONATO">
+                        <br><br><br><br>
+
+                        <input style="float: left; margin-right: 45px;" type="text" id="ipt_premiacaoChamps"
+                            name="premio_camp" placeholder="PREMIAÇÃO">
+                        <input type="text" id="ipt_chave" name="chave_camp" placeholder="CHAVE">
+                        <br><br><br><br>
+
+                        <input type="submit" id="btn_enviar" value="Enviar" class="btn-envio">
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <img src="imagens/fifa.png">
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    function EnvioCamp() {
+
+        var todos = new URLSearchParams(new FormData(form_camp));
+        fetch("/quesitos/EnvioCamp", {
+            method: "POST",
+            body: todos
+        }).then(function (response) {
+
+            if (response.ok) {
+
+                alert('Campeonato Adicionado!')
+                // window.location.href = 'login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+
+</script>

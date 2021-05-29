@@ -1,0 +1,170 @@
+body{
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #1B2029;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.header{
+    background-color: black;
+    overflow: auto;
+}
+
+.fonte{
+    color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar :hover {
+    font-weight: bold;
+    color: #2272a1;
+}
+
+.titulo {
+    margin: 0;
+    float: left;
+    padding-top: 7px;
+}
+
+.navbar {
+    list-style: none;
+    float: right;
+    cursor: pointer;
+    color: white;
+}
+
+li {
+    float: left;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+/* aba cadastro */
+/* lado esquerdo */
+.espace{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    float: left;
+    margin-left: 18%;
+    height: 440px;
+    width: 367px;
+    background-color: #161616;
+}
+
+/* lado direito */
+.espace2{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 52%;
+    height: 439px;
+    width: 310px;
+    background-color: white;
+    margin-top: 8%;
+}
+
+.destaque{
+    color: #30a6f0;
+}
+
+/* lado esquerdo */
+.espace h1{
+    margin-left: 60px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+/* lado esquerdo */
+.barra{
+    border-bottom: 5px solid #30a6f0;
+    width: 75%;
+    margin-left: 12%;
+}
+
+/* lado esquerdo */
+.espace img{
+    height: 130px;
+    margin-left: 40%;
+    margin-top: 18%;
+}
+
+/* lado direito */
+.espace2 h4{
+    margin: 5px;
+    color: #30a6f0;
+    float: left;
+}
+
+.espace2 button{
+    /* margin: 2px; */
+    margin-left: 30px;
+    margin-top: 5px;
+    cursor: pointer;
+    background-color: Transparent;
+    border-color: #30a6f0;
+    border-width: 3.5px;
+    border-style: solid;
+    color: #30a6f0;
+    border-radius: 10%;
+    height: 30px;
+}
+
+.btn-login{
+    margin: 10px;
+    cursor: pointer;
+    background-color: Transparent;
+    border-color: #30a6f0;
+    border-width: 3.5px;
+    border-style: solid;
+    color: #30a6f0;
+    border-radius: 10%;
+    height: 30px;
+}
+
+/* inputs */
+
+.centro{
+    margin-top: 55px;
+    text-align: center;
+}
+
+.centro span{
+    font-size: medium;
+    font-weight: bold;
+}
+
+.centro button{
+    margin-right: 15%;
+}
+
+
+/* espaço login */
+.user{
+    border: none;
+    border-bottom: 3px solid #30a6f0;
+    text-align: center;
+}
+
+
+/* EXTRAS */
+
+.extra {
+    margin: 10px;
+}
+
+.extra img {
+   height: 50px;
+   visibility: hidden;
+}
+
+.extra .msg_erro {
+    background-color: #30a6f0; 
+    color: black; 
+    visibility: hidden;
+}
