@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campeonatos</title>
+    <link rel="shortcut icon" href="imagens/world-cup.png" type="image/x-icon">
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 
@@ -14,14 +15,16 @@
     <div class="barra">
         <div class="container">
             <img class="fifa" src="imagens/electronics-arts.png">
-            <img class="fifa" src="imagens/user.png">
+            <a href="login.html"> <img class="fifa" src="imagens/user.png"> </a>
         </div>
     </div>
 
     <!-- 2 espaço para o cliente -->
     <div class="header">
         <div class="container">
-            <h2 class="titulo"><span class="fonte">ALL CUP <span class="destaque"> FIFA </span> </span></h2>
+            <a href="index.html">
+                <h2 class="titulo"><span class="fonte">ALL CUP <span class="destaque"> FIFA </span> </span></h2>
+            </a>
 
             <ul class="navbar">
                 <li> <a href="index.html"> Início </a> </li>
@@ -90,17 +93,17 @@
             <div class="todos">
 
                 <form id="form_camp" method="post" onsubmit="return EnvioCamp()">
-                        <input style="float: left; margin-right: 45px;" type="text" id="ipt_nomeChamps" name="nome_camp"
-                            placeholder="NOME CAMPEONATO">
-                        <input type="text" id="ipt_tipoChamps" name="tipo_camp" placeholder="TIPO CAMPEONATO">
-                        <br><br><br><br>
+                    <input style="float: left; margin-right: 45px;" type="text" id="ipt_nomeChamps" name="nome_camp"
+                        placeholder="NOME CAMPEONATO">
+                    <input type="text" id="ipt_tipoChamps" name="tipo_camp" placeholder="TIPO CAMPEONATO">
+                    <br><br><br><br>
 
-                        <input style="float: left; margin-right: 45px;" type="text" id="ipt_premiacaoChamps"
-                            name="premio_camp" placeholder="PREMIAÇÃO">
-                        <input type="text" id="ipt_chave" name="chave_camp" placeholder="CHAVE">
-                        <br><br><br><br>
+                    <input style="float: left; margin-right: 45px;" type="text" id="ipt_premiacaoChamps"
+                        name="premio_camp" placeholder="PREMIAÇÃO">
+                    <input type="text" id="ipt_chave" name="chave_camp" placeholder="CHAVE">
+                    <br><br><br><br>
 
-                        <input type="submit" id="btn_enviar" value="Enviar" class="btn-envio">
+                    <input type="submit" id="btn_enviar" value="Enviar" class="btn-envio">
                 </form>
 
             </div>
@@ -119,7 +122,6 @@
 <script>
 
     function EnvioCamp() {
-
         var todos = new URLSearchParams(new FormData(form_camp));
         fetch("/quesitos/EnvioCamp", {
             method: "POST",
@@ -129,7 +131,11 @@
             if (response.ok) {
 
                 alert('Campeonato Adicionado!')
-                // window.location.href = 'login.html';
+
+                ipt_nomeChamps.value = '';
+                ipt_tipoChamps.value = '';
+                ipt_premiacaoChamps.value = '';
+                ipt_chave.value = '';
 
             } else {
 
@@ -143,6 +149,4 @@
 
         return false;
     }
-
-
 </script>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="shortcut icon" href="imagens/world-cup.png" type="image/x-icon">
+    <script type="text/javascript" src="funcoes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+</head>
+
+<body class="tela-principal" onload="obterCamp()">
+
+    <div class="barra-lateral">
+        <h2> ALL CUP <span class="destaque"> FIFA </h2>
+
+        <div class="usuario">
+            <h4>Olá, <b id="b_user"></b></h4>
+        </div>
+
+        <div class="nav">
+            <span class="destaque">Estatisticas</span> <br><br>
+            <span> <a href="ligas.html"> Campeonatos </a> </span> <br><br>
+            <span> <a href="feed.html"> Feed </a> </span> <br><br>
+        </div>
+
+        <div class="bot">
+            <button href="#" class="btn-sair" onclick="logoff()">LOGOUT</button>
+        </div>
+    </div>
+
+    <h2 class="estat">Estatísticas Antes E Depois Do ALL CUP FIFA</h2>
+
+    <div class="estatistica">
+        <img src="imagens/championship.png">
+        <div id="t_camps" class="total"></div>
+    </div>
+
+
+    <div class="estatisticaTwo">
+        <img style="padding-bottom: 25px;" src="imagens/gamer.png">
+        <div id="t_jogs" class="totalTwo"></div>
+    </div>
+
+    <div class="estatistica">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="estatisticaTwo">
+        <canvas id="myChartTwo"></canvas>
+    </div>
+
+</body>
+
+</html>
+<script>
+    // total de campeonatos---------------------------------------------------------------------
+    function atualizarFeed(contagem) {
+        var total = document.getElementById("t_camps");
+        var totalTwo = document.getElementById("t_jogs");
+        total.innerHTML = "";
+        totalTwo.innerHTML = "";
+        for (let i = 0; i < contagem.length; i++) {
+            var quesito = contagem[i];
+
+            var divPublicacao = document.createElement("div")
+            var divPublicacaoTwo = document.createElement("div")
+            var divConta = document.createElement("div")
+            var divporce = document.createElement("div")
+
+            divConta.innerHTML = `Total de Campeonatos: ${quesito.Todos}`;
+            divporce.innerHTML = `Maior Premiação: R$ ${quesito.Maior}`;
+
+            divPublicacao.className = "pai";
+            divPublicacaoTwo.className = "paiTwo";
+            divConta.className = "conta";
+            divporce.className = "porce";
+
+            divPublicacao.appendChild(divConta);
+            divPublicacaoTwo.appendChild(divporce);
+
+            total.appendChild(divPublicacao);
+            totalTwo.appendChild(divPublicacaoTwo);
+        }
+    }
+
+    function obterCamp() {
+        fetch("/camp-Estatisticas")
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        atualizarFeed(resposta);
+
+                        // finalizarAguardar();
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    // finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção das publicações: ${error.message}`);
+            });
+    }
+
+    verificar_autenticacao();
+
+    // GRAFICO ESTATICO -- PADRAO 
+
+    var ctx = document.getElementById('myChart');
+
+    var meuGrafico = new Chart(ctx, {
+        type: 'line',
+        // DATA -> os dados renderizados no gráfico:
+        data: {
+            // Informações em Eixo X
+            labels: ["2018", "2019", "2020"],
+            // Datasets -> grupos de dados!
+            datasets: [
+                // Primeiro dataset    
+                {
+                    // Qual o título deste dataset?
+                    label: "Campeonato",
+                    // Dados? Lembre-se, respectivos a labels.
+                    data: [16, 15, 16],
+                    // expessura da linha
+                    borderWidth: 5,
+                    // cor da linha - em rgba, a é a opacidade.
+                    // 1 = 100% // 0.5 = 50%
+                    borderColor: '#30a6f0',
+                    // cor de "fundo" dos dados na tela. transparent = sem cor.
+                    backgroundColor: 'transparent',
+                },
+            ]
+        },
+
+        // OPTIONS -> Opções globais
+        options: {
+
+            title: {
+                display: true,
+                fontSize: 18,
+                text: "Indice de Campeonatos (Antes)",
+                // onde? right? left? top?
+                position: 'top',
+            },
+            legend: {
+                // mostrar legenda?
+                display: true,
+                // ao contrario? (dataset 1 depois de 2)
+                reverse: true,
+                // onde?
+                position: 'top'
+            },
+        }
+    })
+
+    // GRAFICO ESTATICO
+
+    var ctxx = document.getElementById('myChartTwo');
+
+    var meuGrafico = new Chart(ctxx, {
+        type: 'line',
+        // DATA -> os dados renderizados no gráfico:
+        data: {
+            // Informações em Eixo X
+            labels: ["2021", "2022", "2023"],
+            // Datasets -> grupos de dados!
+            datasets: [
+                // Primeiro dataset    
+                {
+                    // Qual o título deste dataset?
+                    label: "Campeonatos",
+                    // Dados? Lembre-se, respectivos a labels.
+                    data: [20, 22, 27],
+                    // expessura da linha
+                    borderWidth: 5,
+                    // cor da linha - em rgba, a é a opacidade.
+                    // 1 = 100% // 0.5 = 50%
+                    borderColor: '#30a6f0',
+                    // cor de "fundo" dos dados na tela. transparent = sem cor.
+                    backgroundColor: 'transparent',
+                },
+            ]
+        },
+
+        // OPTIONS -> Opções globais
+        options: {
+
+            title: {
+                display: true,
+                fontSize: 18,
+                text: "Indice de Campeonatos Agora (Projeção)",
+                // onde? right? left? top?
+                position: 'top',
+            },
+            legend: {
+                // mostrar legenda?
+                display: true,
+                // ao contrario? (dataset 1 depois de 2)
+                reverse: true,
+                // onde?
+                position: 'top'
+            },
+        }
+    })
+
+    Chart.defaults.global.defaultFontColor = "#2272a1";
+
+</script>

@@ -11,12 +11,11 @@ create table jogadores(
 	dataNasc date
 );
 
-select * from jogadores;
 create table campeonatos(
 	idCampeonato int primary key auto_increment,
     nome varchar(40),
     tipo varchar(40),
-    premiação varchar(100),
+    premiação int,
     pinCamp int,
     fkjogadores int,
     foreign key (fkjogadores) references jogadores (idJogador)
@@ -24,7 +23,6 @@ create table campeonatos(
 
 create table feed(
 	idInfo int primary key auto_increment,
-    titulo varchar (45),
     mensagem varchar(350),
     fkjogador int,
     foreign key (fkjogador) references jogadores (idJogador)
@@ -44,22 +42,11 @@ insert into  campeonatos values
 	(null,'Ultimate Team','Pontos Corridos','5500','4441','4');
     
     insert into feed values 
-	(null,'Curiosidades','Em 2017, FIFA entrou para os Recordes Mundiais do Guinness como franquia de jogo de esporte mais vendida do mundo.','1'),
-	(null,'Ultimas Noticias','ELECTRONIC ARTS anuncia expansão global multiplataforma do EA SPORTS FIFA','2'),
-	(null,'Eventos','RULEBREAKEARS dia 20/01', '4'),
-	(null,'Ofertas e Promoções','FIFA 20 com promoção de 20%','5'),
-	(null,'Atualizações','A partir do dia 10/03, EA iniciará a distribuição das novas versões
+	(null,'Em 2017, FIFA entrou para os Recordes Mundiais do Guinness como franquia de jogo de esporte mais vendida do mundo.','1'),
+	(null,'ELECTRONIC ARTS anuncia expansão global multiplataforma do EA SPORTS FIFA','2'),
+	(null,'RULEBREAKEARS dia 20/01', '4'),
+	(null,'FIFA 20 com promoção de 20%','5'),
+	(null,'A partir do dia 10/03, EA iniciará a distribuição das novas versões
 dos jogadores, referentes a atletas que cresceram muito de dentro dos campos reais desde o lançamento do game (em outubro de 2020)','3');
 
 
-    select * from campeonatos;
-    
-    SELECT 
-    nome,
-    tipo,
-	premiação,
-	pinCamp
-    FROM campeonatos;
-    
-    select * from jogadores inner join campeonatos on fkjogadores = idjogador;
-	update jogadores set fkInfo = '1' where idJogador = '5';

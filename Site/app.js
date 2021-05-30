@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'dev'; // altere para 'production' ou 'dev'
+process.env.NODE_ENV = 'production'; // altere para 'production' ou 'dev'
 
 var express = require('express');
 var path = require('path');
@@ -8,6 +8,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var jogadoresRouter = require('./routes/jogadores');
 var quesitosRouter = require('./routes/quesitos');
+var feedsRouter = require('./routes/feeds');
+var campEstatisticasRouter = require('./routes/camp-Estatisticas');
+
+
+
 /* nao usado ----
 var usuariosRouter = require('./routes/usuarios');
 var leiturasRouter = require('./routes/leituras');
@@ -25,6 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/jogadores', jogadoresRouter);
 app.use('/quesitos', quesitosRouter);
+app.use('/feeds', feedsRouter);
+app.use('/camp-Estatisticas', campEstatisticasRouter);
+
 
 /* nao usado ----
 app.use('/leituras', leiturasRouter);

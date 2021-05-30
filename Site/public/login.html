@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/login-cad.css">
+    <link rel="shortcut icon" href="imagens/world-cup.png" type="image/x-icon">
 </head>
 
 <body>
 
     <div class="header">
         <div class="container">
-            <h2 class="titulo"><span class="fonte">ALL CUP <span class="destaque"> FIFA </span> </span></h2>
+            <a href="index.html">  <h2 class="titulo"><span class="fonte">ALL CUP <span class="destaque"> FIFA </span> </span></h2> </a>
 
             <ul class="navbar">
                 <li> <a href="index.html"> Início </a> </li>
@@ -82,7 +83,7 @@
                     sessionStorage.nome_usuario_meuapp = json.nome;
                     sessionStorage.id_usuario_meuapp = json.idJogador;
 
-                    window.location.href = 'telajogador.html';
+                    window.location.href = 'estatisticas.html';
                 });
 
             } else {

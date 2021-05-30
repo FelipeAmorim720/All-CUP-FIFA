@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campeonatos</title>
     <link rel="stylesheet" href="css/estilo.css">
+    <link rel="shortcut icon" href="imagens/world-cup.png" type="image/x-icon">
     <script type="text/javascript" src="funcoes.js"></script>
 </head>
 
@@ -20,7 +21,7 @@
         </div>
 
         <div class="nav">
-            <span> <a href="telajogador.html"> Estatisticas </a> </span> <br><br>
+            <span> <a href="estatisticas.html"> Estatisticas </a> </span> <br><br>
             <span class="destaque">Campeonatos</span> <br><br>
             <span> <a href="feed.html"> Feed </a> </span> <br><br>
         </div>
@@ -31,11 +32,16 @@
     </div>
 
     <h2 class="champs">Campeonatos Para Jogar!</h2>
-
-    <div id="camps_container" class="mostra">
-
+    
+    <div class="centralizado">
+        <!-- nomes das colunas -->
+        <span style="margin-left: 192px;" class="especifico">Campeonatos</span>
+        <span style="margin-left: 150px;" class="especifico">Tipos</span>
+        <span style="margin-left: 185px;" class="especifico">Prêmios</span>
+        <span style="margin-left: 115px;" class="especifico">Chaves</span>
+        <!-- div responsavel selects -->
+        <div id="camps_container" class="mostra"></div>
     </div>
-
 </body>
 
 </html>
@@ -55,7 +61,7 @@
 
             divNome.innerHTML = `${quesito.nome}:`;
             divTipo.innerHTML = quesito.tipo;
-            divPremiação.innerHTML = quesito.premiação;
+            divPremiação.innerHTML = `R$ ${quesito.premiação}`;
             divPin.innerHTML = quesito.pinCamp;
 
             divPublicacao.className = "publicacao";
@@ -82,11 +88,11 @@
 
                         atualizarFeed(resposta);
 
-                        finalizarAguardar();
+                        // finalizarAguardar();
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
-                    finalizarAguardar("Nenhum resultado encontrado ou erro na API");
+                    // finalizarAguardar("Nenhum resultado encontrado ou erro na API");
                 }
             })
             .catch(function (error) {
