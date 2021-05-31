@@ -183,18 +183,12 @@ a {
 }
 
 .campeonatos{
+    /* text-align: center; */
     background-color: gray;
     background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
     background-image: url(../imagens/monsterss.jpg);
-}
-
-.star{
-    margin: 0;
-    padding-top: 320px;
-    margin-left: 62%;
-    /* color: #2272a1; */
 }
 
 /* info ----------------------------------- */
@@ -206,7 +200,16 @@ a {
     background-image: url(../imagens/white.jpeg);
     margin: 0;
     overflow: auto;
+    text-align: center;
     /* margin-left: 150px; */
+}
+
+.info h3{
+    color: #2272a1;
+}
+
+.especial{
+    color: #2272a1;
 }
 
 .coluna{
@@ -393,7 +396,7 @@ a {
 .estat{
     margin: 0;
     color: #2272a1;
-    margin-left: 39.2%;
+    margin-left: 48%;
     padding-top: 85px;
     text-transform: uppercase;
 }
@@ -412,13 +415,14 @@ a {
     margin-left: 16%;
     padding-bottom: 15px;
     text-align: center;
+    width: 72%;
 
 }
 
 /* tabelas -----------------------------------------------------------------------*/
 .especifico{
     color: black;
-    margin-left: 160px;
+    /* margin-left: 140px; */
     text-transform: uppercase;
     font-weight: bold;
     float: left;
@@ -472,7 +476,7 @@ a {
     color:#2272a1;
     font-weight: bold;
     position: absolute;
-    margin-left: 36.5%;
+    margin-left: 35.5%;
 }
 
 
@@ -480,7 +484,7 @@ a {
     float:right;
     color:#2272a1;
     font-weight: bold;
-    padding-right: 10px;
+    padding-right: 25px;
 }
 
 

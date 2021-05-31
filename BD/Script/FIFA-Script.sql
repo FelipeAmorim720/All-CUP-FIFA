@@ -49,4 +49,4 @@ insert into  campeonatos values
 	(null,'A partir do dia 10/03, EA iniciará a distribuição das novas versões
 dos jogadores, referentes a atletas que cresceram muito de dentro dos campos reais desde o lançamento do game (em outubro de 2020)','3');
 
-
+delete from campeonatos where idJogador in ('4','5', '6');

@@ -69,7 +69,7 @@
                     <div id="div_erro" class="msg_erro">
                     </div>
 
-                    <img src="https://almeidamelo.adv.br/imagens/carregamento.gif" id="img_aguarde">
+                    <!-- <img src="https://almeidamelo.adv.br/imagens/carregamento.gif" id="img_aguarde"> -->
                     <!--style="display: none;"-->
 
                 </div>
@@ -93,6 +93,7 @@
 
             if (response.ok) {
 
+                alert('Cadastrado com sucesso!')
                 window.location.href = 'login.html';
 
             } else {
@@ -116,13 +117,13 @@
     
     function aguardar() {
         btn_entrar.disabled = true;
-        img_aguarde.style.visibility = 'visible';
+        // img_aguarde.style.visibility = 'visible';
         div_erro.style.visibility = 'hidden';
     }
 
     function finalizar_aguardar(resposta) {
         btn_entrar.disabled = false;
-        img_aguarde.style.visibility = 'hidden';
+        // img_aguarde.style.visibility = 'hidden';
         div_erro.style.visibility = 'visible';
         div_erro.innerHTML = resposta;
     }
