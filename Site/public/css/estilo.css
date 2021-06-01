@@ -536,6 +536,7 @@ a {
 .dashboard .textarea-padrao {
     resize: none;
     display: inline-block;
+    text-align: center;
 }
 
 .dashboard .btn-blue {
@@ -584,6 +585,7 @@ a {
     margin-left: 160px;
     float: left;
     overflow: auto;
+    padding-bottom: 2px;
 }
 
 .painel :hover{

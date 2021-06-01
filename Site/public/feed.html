@@ -38,7 +38,7 @@
                 <form id="form_postar" method="post" onsubmit="return postar()">
                     Descrição:
                     <br>
-                    <textarea id="" rows="3" cols="50" maxlength="100" class="textarea-padrao" name="mensagem"></textarea>
+                    <textarea id="inf" rows="3" cols="50" maxlength="100" class="textarea-padrao" name="mensagem"></textarea>
                     <br>
                     <button id="btn_envio" class="btn-blue">Enviar</button>
                 </form>
@@ -76,8 +76,8 @@
 
             if (resposta.ok) {
                 obterPublicacoes();
-
                 finalizarAguardar();
+                inf.value = '';
             } else {
                 console.log('Erro ao publicar!');
                 resposta.text().then(texto => {
